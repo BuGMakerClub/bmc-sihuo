@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>聚通官网</title>
+<style>
+#topmenu{
+	position:fixed; 
+	top:0; 
+	left: 0;
+	width: 100%; 
+	height: 40px; 
+	background: #0F070B; 
+	padding-top: 20px; 
+	padding-bottom: 20px;
+	min-width:1000px;
+}
+.download{
+	position:fixed; 
+	left: 60%; 
+	top: 80px; 
+	width: 200px; 
+	height: 200px; 
+	z-index: 999; 
+	background-color: #0F070B;
+}
+.img-container{
+	max-width: 100%;
+	height: 0;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+#company{
+	margin-top: 80px;
+	padding-bottom: 50%;
+}
+#product{
+	padding-bottom: 20%;
+}
+#product-list{
+	width: 80%;
+	padding-bottom: 68%;
+}
+#info1{
+	padding-bottom: 54%;
+}
+#info2{
+	padding-bottom: 58%;
+}
+#info3{
+	padding-bottom: 48%;
+}
+#aboutus{
+	padding-bottom: 70%;
+}
+#team{
+	padding-bottom: 44%;
+}
+#bottom{
+	padding-bottom: 14%;
+}
+.img-container img{
+	width: 100%;
+}
+.img-container-item{
+	float: left;
+	margin: 10px 6%;
+	padding-bottom: 33.98%;
+	width: 21%;
+	height: 0;
+}
+.img-container-item img{
+	max-width: 100%;
+}
+td{
+	text-align: center;
+} 
+a{ 
+	color: #FFFFFF; 
+	text-decoration: none; 
+	font-family: 隶书; 
+	font-size: 18px; 
+	margin-left: 5%; 
+} 
+a:hover{ 
+	text-decoration: underline;
+}
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+	<div class="download" id="downloadBox" style="display: none;">
+    	<center>
+    	<table border="0" cellpadding="0" cellspacing="0">
+        	<tr><td style="color: #FFFFFF;">请扫描二维码</td></tr>
+           	<tr><td style="padding-top: 10px;">
+            	<img src="images/_download.png" width="160" height="160" alt="">
+            </td></tr>
+        </table>
+        </center>
+    </div>
+	<div id="topmenu">
+    	<center>
+    	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+        	<tr>
+            	<td width="40%">
+                	<img src="images/v2/_logo.png" alt="">
+                </td>
+                <td align="left">
+                	<a href="index.html">首页</a>
+                    <!--
+                	<a href="javascript: void(0);" onmouseover="show_download()" onmouseout="hide_download();">下载</a>-->
+                    <a href="index.html#bottom">下载</a>
+                	<a href="index.html">优势</a>
+                	<a href="index.html#aboutus">关于聚通</a>
+                	<a href="index.html#bottom">联系我们</a>
+                	<a href="shop.html">商城</a>
+                </td>
+            </tr>
+        </table>
+        </center>
+    </div>
+    <div id="company" class="img-container">
+    	<img src="images/_08.png" alt="" >
+    </div>
+    <div id="product" class="img-container">
+    	<img src="images/_09.png" alt="">
+    </div>
+    <center>
+    <div id="product-list" class="img-container">
+        <div class="img-container-item">
+            <img src="images/_11.png" alt="">
+        </div>
+        <div class="img-container-item">
+            <img src="images/_13.png" alt="">
+        </div>
+        <div class="img-container-item">
+            <img src="images/_15.png" alt="">
+        </div>
+        <div class="img-container-item">
+            <img src="images/_17.png" alt="">
+        </div>
+        <div class="img-container-item">
+            <img src="images/_23.png" alt="">
+        </div>
+        <div class="img-container-item">
+            <img src="images/_25.png" alt="">
+        </div>
+    </div>
+    </center>
+    <div id="info1" class="img-container">
+    	<img src="images/v2/_19.png" alt="">
+    </div>
+    <div id="info2" class="img-container">
+    	<img src="images/v2/_20.png" alt="">
+    </div>
+    <div id="info3" class="img-container">
+    	<img src="images/v2/_21.png" alt="">
+    </div>
+    <div id="aboutus" class="img-container">
+    	<img src="images/v2/_22.png" alt="">
+    </div>
+    <!--
+    <div id="team" class="img-container">
+    	<img src="images/_39_1.png" alt="">
+    </div>
+    -->
+    <div id="bottom" class="img-container">
+    	<img src="images/v2/_40_1.png" alt="">
+    </div>
+</body>
+</html>
+<script>
+function show_download(){
+	document.getElementById("downloadBox").style.display = "block";
+}
+function hide_download(){
+	document.getElementById("downloadBox").style.display = "none";
+}
+</script>
