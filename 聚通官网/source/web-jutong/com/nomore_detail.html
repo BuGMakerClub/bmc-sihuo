@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>聚通官网 - 购买产品</title>
+<style>
+#topmenu{
+	position:fixed; 
+	top:0; 
+	left: 0;
+	width: 100%; 
+	height: 40px; 
+	background: #0F070B; 
+	padding-top: 20px; 
+	padding-bottom: 20px;
+	min-width:1000px;
+}
+.download{
+	position:fixed; 
+	left: 60%; 
+	top: 80px; 
+	width: 200px; 
+	height: 200px; 
+	z-index: 999; 
+	background-color: #0F070B;
+}
+.img-container{
+	max-width: 100%;
+	height: 0;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+#company{
+	margin-top: 80px;
+	padding-bottom: 43%;
+}
+#product{
+	padding-bottom: 13%;
+}
+#product-list{
+	width: 60%;
+	padding-bottom: 46%;
+}
+#info1{
+	padding-bottom: 48%;
+}
+#info2{
+	padding-bottom: 50%;
+}
+#info3{
+	padding-bottom: 40%;
+}
+#aboutus{
+	padding-bottom: 48%;
+}
+#team{
+	padding-bottom: 44%;
+}
+#bottom{
+	padding-bottom: 14%;
+}
+.img-container img{
+	width: 100%;
+}
+.img-container-item{
+	float: left;
+	margin: 10px 6%;
+	padding-bottom: 30%;
+	width: 21%;
+	height: 0;
+	cursor: pointer;
+}
+.img-container-item img{
+	max-width: 100%;
+}
+td{
+	text-align: center;
+} 
+a{ 
+	color: #FFFFFF; 
+	text-decoration: none; 
+	font-family: 隶书; 
+	font-size: 18px; 
+	margin-left: 5%; 
+} 
+a:hover{ 
+	text-decoration: underline;
+}
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+	
+	<div id="topmenu">
+    	<center>
+    	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+        	<tr>
+            	<td width="40%">
+                	<img src="images/_logo.png" alt="">
+                </td>
+                <td align="left">
+                	<a href="javascript: void(0);" onclick="location.href='index.html'">首页</a>
+                    <!--
+                	<a href="javascript: void(0);" onmouseover="show_download()" onmouseout="hide_download();">下载</a>-->
+                    <a href="index.html#bottom">下载</a>
+                	<a href="javascript: void(0);" onclick="location.reload();">优势</a>
+                	<a href="index.html#aboutus">关于聚通</a>
+                	<a href="index.html#bottom">联系我们</a>
+                	<a href="javascript: void(0);" onclick="location.href='shop.html'">商城</a>
+                </td>
+            </tr>
+        </table>
+        </center>
+    </div>
+
+	<center>    
+    	<h1 style="margin: 280px 0px 200px 0px;">很抱歉，该产品已售罄</h1>
+	</center>
+    
+    <div id="product" class="img-container">
+    	<img src="images/details_/ptitle.png" alt="">
+    </div>
+    <center>
+    <div id="product-list" class="img-container">
+        <div class="img-container-item" onclick="location.href='calculator_detail.html'">
+            <img src="images/shop_images/p1.png" alt="">
+        </div>
+        <div class="img-container-item" onclick="location.href='terminal_detail.html'">
+            <img src="images/shop_images/p2.png" alt="">
+        </div>
+        <div class="img-container-item" onclick="location.href='nomore_detail.html'">
+            <img src="images/shop_images/p3.png" alt="">
+        </div>
+        <div class="img-container-item" onclick="location.href='bk_detail.html'">
+            <img src="images/shop_images/p4.png" alt="">
+        </div>
+        <div class="img-container-item" onclick="location.href='96588_detail.html'">
+            <img src="images/shop_images/p5.png" alt="">
+        </div>
+        <div class="img-container-item" onclick="location.href='calculator_detail.html'">
+            <img src="images/shop_images/p6.png" alt="">
+        </div>
+    </div>
+    </center>
+    <div id="bottom" class="img-container">
+    	<img src="images/_40_2.png" alt="">
+    </div>
+</body>
+</html>
+<script>
+function show_download(){
+	document.getElementById("downloadBox").style.display = "block";
+}
+function hide_download(){
+	document.getElementById("downloadBox").style.display = "none";
+}
+</script>
