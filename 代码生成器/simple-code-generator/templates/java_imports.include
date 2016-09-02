@@ -1,0 +1,4 @@
+import ${servicepackage}.entity.*;
+import ${servicepackage}.dao.*;
+import ${servicepackage}.service.*;
+
