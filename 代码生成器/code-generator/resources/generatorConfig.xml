@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GBK"?>
+<modules>
+	<!-- 模块的名称，模块对应的jpa模板的根目录（会遍历根目录下所有的模板，包括子目录） -->
+    <module name="sms" templateRoot="templates/jpa">
+    	<!-- 属性
+    		   会为所有的property生成property_dir属性,
+    		   如：pkg=com.company => pkg_dir=com/company 
+    		   
+    		 使用的时候，直接${propertyName}的方式使用
+    	-->
+        <properties>
+            moduledir=sms
+            modelpackage=com.pateo.base.sms.data.model
+            repopackage=com.pateo.base.sms.data.repo
+        </properties>
+        <!-- 数据库表名 -->
+        <tables>
+            sms_msg_template
+			sms_provider
+			sms_send_adapter
+			sms_send_log
+        </tables>
+    </module>  
+
+</modules>

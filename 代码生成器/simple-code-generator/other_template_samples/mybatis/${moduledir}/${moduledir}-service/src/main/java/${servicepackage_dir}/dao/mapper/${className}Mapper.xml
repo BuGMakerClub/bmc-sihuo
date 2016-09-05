@@ -1,0 +1,203 @@
+<#assign className = table.className>   
+<#assign classNameLower = className?uncap_first> 
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="${servicepackage}.dao.mapper.${className}Mapper" >
+  <resultMap id="BaseResultMap" type="${servicepackage}.entity.${className}" >    
+	<#list table.columns as column>
+        <result column="${column.sqlName}" property="${column.columnNameLower}" jdbcType="${column.jdbcSqlTypeName?upper_case}"/>			    
+	</#list>		
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+	<#list table.columns as column>
+	  <if test="condition.${column.columnNameLower} != null" >
+         and ${column.sqlName} = #${"\{"}condition.${column.columnNameLower}}
+      </if>
+	</#list>    
+    </trim>
+  </sql>
+  
+  <sql id="Base_Column_List" >
+	<#list table.columns as column>		
+		${column.sqlName}<#if column_has_next>,</#if>
+	</#list>    
+  </sql>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="${corepackage}.dao.MybatisCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ${table.sqlName}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by $${"\{"}orderByClause}
+    </if>
+    <include refid="common.Mysql_Pagination_Limit" />
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ${table.sqlName}
+    where ${table.pkColumn.sqlName} = #${"\{"+table.pkColumn.columnNameLower}}
+  </select>  
+  
+  <select id="selectByPrimaryKeys" resultMap="BaseResultMap" parameterType="java.util.List" >
+    select 
+    <include refid="Base_Column_List" />
+    from ${table.sqlName}
+    where ${table.pkColumn.sqlName} in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+           #${"\{"}item}
+		</foreach>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ${table.sqlName}
+    where ${table.pkColumn.sqlName} = #${"\{"+table.pkColumn.columnNameLower}}
+  </delete>
+  
+  <delete id="deleteByPrimaryKeys" parameterType="java.util.List" >
+    delete from ${table.sqlName}
+    where ${table.pkColumn.sqlName} in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+           #${"\{"}item}
+		</foreach>	
+  </delete>
+  
+  <delete id="deleteByParams" parameterType="${corepackage}.dao.MybatisCriteria" >
+    delete from ${table.sqlName}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <insert id="insert" parameterType="${servicepackage}.entity.${className}" >
+    <selectKey resultType="java.lang.Long" keyProperty="${table.pkColumn.columnNameLower}" order="BEFORE" >
+      SELECT NEXTVAL('SEQ_${table.sqlName}')
+    </selectKey>
+    insert into ${table.sqlName} 
+	(
+	   <#list table.columns as column>
+	   ${column.sqlName}<#if column_has_next>,</#if>
+		</#list>
+	)
+    values 
+	(
+	    <#list table.columns as column>
+	    #${"\{"}${column.columnNameLower}}<#if column_has_next>,</#if>
+	    </#list>
+	)
+  </insert>
+  
+  <insert id="insertSelective" parameterType="${servicepackage}.entity.${className}" >
+    <selectKey resultType="java.lang.Long" keyProperty="${table.pkColumn.columnNameLower}" order="BEFORE" >
+      SELECT NEXTVAL('SEQ_${table.sqlName}')
+    </selectKey>
+    insert into ${table.sqlName}
+    <trim prefix="(" suffix=")" suffixOverrides="," >     
+      <#list table.columns as column>
+	  <if test="${column.columnNameLower} != null" >
+        ${column.sqlName}<#if column_has_next>,</#if>
+      </if>  
+	  </#list>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >      
+      <#list table.columns as column>
+	  <if test="${column.columnNameLower} != null" >
+        #${"\{"}${column.columnNameLower}}<#if column_has_next>,</#if>
+      </if>
+      </#list>
+    </trim>
+  </insert>
+  
+  <insert id="insertBatch" parameterType="java.util.List">
+	insert into ${table.sqlName}
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+	    ${table.pkColumn.sqlName},
+      <#list table.columns as column>
+	  <#if !column.pk>
+        ${column.sqlName}<#if column_has_next>,</#if>
+	  </#if>
+	  </#list>    
+	</trim>
+	values 
+    <foreach collection="list" item="item" index="index" separator=",">   
+	<trim prefix="(" suffix=")" suffixOverrides=",">    	
+	    NEXTVAL('SEQ_${table.sqlName}'),
+      <#list table.columns as column>
+	  <#if !column.pk>
+        #${"\{item."}${column.columnNameLower}}<#if column_has_next>,</#if>
+	  </#if>
+      </#list>
+	</trim>
+    </foreach>		 
+  </insert>
+  
+  <select id="countByParams" parameterType="${corepackage}.dao.MybatisCriteria" resultType="java.lang.Integer" >
+    select count(*) from ${table.sqlName}
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <update id="updateByParamsSelective" parameterType="java.util.Map" >
+    update ${table.sqlName}
+    <set>
+	  <#list table.columns as column>
+	  <#if !column.pk>
+      <if test="record.${column.columnNameLower} != null" >	    
+        ${column.sqlName} = #${"\{"}record.${column.columnNameLower}}<#if column_has_next>,</#if>		
+      </if>
+	  </#if>
+	  </#list>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  
+  <update id="updateByParams" parameterType="java.util.Map" >
+    update ${table.sqlName}
+    set 
+	<#list table.columns as column>
+	  <#if !column.pk>
+      ${column.sqlName} = #${"\{"}record.${column.columnNameLower}}<#if column_has_next>,</#if>
+	  </#if>
+	</#list>	
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="${servicepackage}.entity.${className}" >
+    update ${table.sqlName}
+    <set>
+	  <#list table.columns as column>
+	  <#if !column.pk>
+      <if test="${column.columnNameLower} != null" >		
+        ${column.sqlName} = #${"\{"}${column.columnNameLower}}<#if column_has_next>,</#if>		
+      </if>
+	  </#if>
+	  </#list>      
+    </set>
+    where ${table.pkColumn.sqlName} = #${"\{"+table.pkColumn.columnNameLower}}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="${servicepackage}.entity.${className}" >
+    update ${table.sqlName}
+    set 
+	<#list table.columns as column>
+	  <#if !column.pk>
+      ${column.sqlName} = #${"\{"}${column.columnNameLower}}<#if column_has_next>,</#if>
+	  </#if>
+	</#list>	
+    where ${table.pkColumn.sqlName} = #${"\{"+table.pkColumn.columnNameLower}}
+  </update>
+</mapper>
