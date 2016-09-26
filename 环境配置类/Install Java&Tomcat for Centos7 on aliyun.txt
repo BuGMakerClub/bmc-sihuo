@@ -1,0 +1,45 @@
+一、JAVA的安装配置
+
+1.下载
+
+2.上传
+
+3.安装
+
+rpm -ivh jdk-8u60-linux-x64.rpm
+
+4.配置
+
+vim /etc/profile
+
+在文末追加
+JAVA_HOME=/usr/java/jdk1.8.0_60  
+JRE_HOME=$JAVA_HOME/jre  
+PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin  
+CLASSPATH=:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib  
+export JAVA_HOME JRE_HOME PATH CLASSPATH
+
+
+二、Tomcat的安装配置
+
+1.下载
+
+2.上传
+
+3.安装
+
+tar -zxvf tomcat.tar.gz
+
+4.配置
+
+编辑tomcat/conf/server.xml
+
+①修改80端口；
+ <Connector port="80" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+②指定path路径
+<Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
+	<Context path="/" docBase="art" reloadable="true"/>  
+</Host>
