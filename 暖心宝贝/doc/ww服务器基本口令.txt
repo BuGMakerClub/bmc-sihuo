@@ -1,22 +1,22 @@
-Î÷²¿ÊıÂë·şÎñÆ÷¹ÜÀí
+è¥¿éƒ¨æ•°ç æœåŠ¡å™¨ç®¡ç†
 user/password:
-oopww1992/yb3wyhb6
+oopww1992/******
 
 
-·şÎñÆ÷Ô¶³Ì
+æœåŠ¡å™¨è¿œç¨‹
 url:211.149.235.118:33890
-password:xpkqmvh2
+password:******
 
-OracleÊı¾İ¿âÃÜÂë:
+Oracleæ•°æ®åº“å¯†ç :
 user/password:
-sys/J#Ww_1992_sys
-system/J#Ww_1992_system
-sysman/J#Ww_1992_sysman
-dbsnmp/J#Ww_1992_dbsnmp
-demo/J#Ww_1992_demo
+sys/******
+system/******
+sysman/******
+dbsnmp/******
+demo/******
 
 
-ftp¿Í»§¶Ë
+ftpå®¢æˆ·ç«¯
 user/password:
 ww/
 
@@ -26,6 +26,6 @@ ww/
 CMCC SERVER   aliyun
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==
 1817632607@qq.com
-yuanyuan0563
+******
 
-root/Minirose0820
+root/******
