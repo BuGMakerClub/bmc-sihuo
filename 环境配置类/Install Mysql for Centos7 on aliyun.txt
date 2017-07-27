@@ -16,5 +16,7 @@
 [root@typecodes ~]# mysql_secure_installation
 
 mysql> grant all privileges on *.* to root@'%'identified by 'password';
+mysql> flush privileges;
 
-mysql>create user 'username'@'%' identified by 'password';
+mysql> create user 'username'@'%' identified by 'password';
+mssql> flush privileges;
