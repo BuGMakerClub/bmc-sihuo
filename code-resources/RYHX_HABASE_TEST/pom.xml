@@ -10,7 +10,7 @@
   
   <properties>
 		<dmdp.version>1.6.0-SNAPSHOT</dmdp.version>
-		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
   <dependencies>
